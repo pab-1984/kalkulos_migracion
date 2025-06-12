@@ -1,0 +1,48 @@
+@page
+@model KalkulosCore.Pages.Clientes.IndexModel
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-page="Create">Crear Nuevo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Telfijo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cliente) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telfijo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Idcliente">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.Idcliente">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Idcliente">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

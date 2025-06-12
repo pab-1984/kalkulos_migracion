@@ -1,0 +1,36 @@
+@page
+@model KalkulosCore.Pages.Acreedores.IndexModel
+
+@{
+    ViewData["Title"] = "Acreedores";
+}
+
+<h1>Acreedores</h1>
+
+<p>
+    <a asp-page="Create">Crear Nuevo Acreedor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Documento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Acreedores) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+            <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+            <td>@Html.DisplayFor(modelItem => item.Documento)</td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

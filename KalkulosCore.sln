@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KalkulosCore", "KalkulosCore.csproj", "{C55FF140-136E-5258-FECC-4579D014D9D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C55FF140-136E-5258-FECC-4579D014D9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55FF140-136E-5258-FECC-4579D014D9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55FF140-136E-5258-FECC-4579D014D9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55FF140-136E-5258-FECC-4579D014D9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10C6EE09-6925-4919-B934-DB440C9B7E64}
+	EndGlobalSection
+EndGlobal
