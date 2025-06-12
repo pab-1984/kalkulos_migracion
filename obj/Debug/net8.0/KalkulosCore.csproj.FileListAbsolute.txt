@@ -263,3 +263,4 @@
 /Users/pabloflores/Desktop/KalkulosCore/obj/Debug/net8.0/KalkulosCore.pdb
 /Users/pabloflores/Desktop/KalkulosCore/obj/Debug/net8.0/KalkulosCore.genruntimeconfig.cache
 /Users/pabloflores/Desktop/KalkulosCore/obj/Debug/net8.0/ref/KalkulosCore.dll
+/Users/pabloflores/Desktop/KalkulosCore/obj/Debug/net8.0/KalkulosCore.sourcelink.json

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KalkulosCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b1d905cc9dfb3da14583f5edf6abbd864fbdb7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("KalkulosCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KalkulosCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

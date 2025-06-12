@@ -1,0 +1,11 @@
+steps:
+# Paso 1: Construir la imagen Docker
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/kuotas/kalkulos/kalkuloscore-app:latest', '.']
+
+# Paso 2: Subir la imagen a Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/kuotas/kalkulos/kalkuloscore-app:latest']
+
+images:
+- 'us-central1-docker.pkg.dev/kuotas/kalkulos/kalkuloscore-app:latest'
