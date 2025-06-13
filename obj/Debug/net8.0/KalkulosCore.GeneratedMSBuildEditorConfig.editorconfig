@@ -190,12 +190,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNyZWVkb3Jlcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Acreedores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNyZWVkb3Jlcy9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Acreedores/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNyZWVkb3Jlcy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Acreedores/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNyZWVkb3Jlcy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Acreedores/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNyZWVkb3Jlcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Clientes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Clientes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Clientes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Clientes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Clientes/Index.cshtml]
@@ -228,6 +252,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Reportes/SaldosDeCapital.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVwb3J0ZXMvU2FsZG9zRGVDYXBpdGFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Shared/_LoginPartial.cshtml]

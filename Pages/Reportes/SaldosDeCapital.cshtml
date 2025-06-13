@@ -1,0 +1,31 @@
+@page
+@model KalkulosCore.Pages.Reportes.SaldosDeCapitalModel
+
+@{
+    ViewData["Title"] = "Saldos de Capital Adeudados";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Monto total de las cuotas de tipo "CAPITAL" con estado "PENDIENTE CAPITAL".</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Totales por Moneda
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Total en Dólares:</h5>
+                <p class="card-text fs-4">@Model.TotalCapitalDolares.ToString("C", new System.Globalization.CultureInfo("en-US"))</p>
+                <hr>
+                <h5 class="card-title">Total en Pesos:</h5>
+                <p class="card-text fs-4">@Model.TotalCapitalPesos.ToString("C", new System.Globalization.CultureInfo("es-UY"))</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-page="/Index">Volver al Inicio</a>
+</div>

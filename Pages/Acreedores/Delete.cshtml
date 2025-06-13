@@ -1,0 +1,25 @@
+@page "{id:int}"
+@model KalkulosCore.Pages.Acreedores.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Acreedor";
+}
+
+<h1>Eliminar</h1>
+<h3 class="text-danger">¿Estás seguro de que quieres eliminar a este acreedor?</h3>
+<div>
+    <h4>Acreedor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Nombres</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Acreedore.Nombres)</dd>
+        <dt class="col-sm-3">Apellidos</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Acreedore.Apellidos)</dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Acreedore.Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-page="./Index">Cancelar y Volver a la Lista</a>
+    </form>
+</div>

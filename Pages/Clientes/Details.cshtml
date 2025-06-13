@@ -1,0 +1,33 @@
+@page "{id:int}"
+@model KalkulosCore.Pages.Clientes.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles del Cliente";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Nombres</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Nombres)</dd>
+
+        <dt class="col-sm-3">Dirección</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Direccion)</dd>
+
+        <dt class="col-sm-3">Teléfono Fijo</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Telfijo)</dd>
+
+        <dt class="col-sm-3">Teléfono Celular</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Telcelular)</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Email)</dd>
+    </dl>
+</div>
+<div class="mt-3">
+    <a asp-page="./Edit" asp-route-id="@Model.Cliente.Idcliente">Editar</a> |
+    <a asp-page="./Index">Volver a la Lista</a>
+</div>
