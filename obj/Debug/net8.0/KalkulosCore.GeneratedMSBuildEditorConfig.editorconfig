@@ -210,6 +210,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Pagos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFnb3MvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pabloflores/Desktop/KalkulosCore/Pages/Pagos/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFnb3MvUmVnaXN0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/pabloflores/Desktop/KalkulosCore/Pages/Prestamos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJlc3RhbW9zL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

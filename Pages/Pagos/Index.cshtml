@@ -1,0 +1,44 @@
+@page
+@model KalkulosCore.Pages.Pagos.IndexModel
+
+@{
+    ViewData["Title"] = "Registrar Pago - Búsqueda";
+}
+
+<h1>Registrar Pago</h1>
+<p>Busque el préstamo por nombre de cliente o número de operación.</p>
+
+<form method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar..." asp-for="SearchString">
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Operación</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Capital Inicial</th>
+            <th>Moneda</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Prestamos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Operacion)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                <td>@Html.DisplayFor(modelItem => item.IdclienteNavigation.Nombres)</td>
+                <td>@Html.DisplayFor(modelItem => item.Capitalinicial)</td>
+                <td>@Html.DisplayFor(modelItem => item.Moneda)</td>
+                <td>
+                    <a class="btn btn-success btn-sm" asp-page="./Registrar" asp-route-id="@item.Operacion">Aplicar Pago</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
