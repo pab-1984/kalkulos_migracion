@@ -16,10 +16,8 @@ namespace KalkulosCore.Pages.Pagos
             _context = context;
         }
 
-        // Propiedad para mostrar los detalles del préstamo seleccionado
         public Prestamo Prestamo { get; set; } = default!;
-
-        // Propiedad para el formulario de pago
+        
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -32,7 +30,6 @@ namespace KalkulosCore.Pages.Pagos
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            // Buscamos el préstamo y cargamos los datos del cliente y sus cuotas pendientes
             Prestamo = await _context.Prestamos
                 .Include(p => p.IdclienteNavigation)
                 .Include(p => p.Cuota.Where(c => c.Estado == "PENDIENTE" || c.Estado == "PENDIENTE CAPITAL").OrderBy(c => c.Vence))
@@ -43,7 +40,6 @@ namespace KalkulosCore.Pages.Pagos
                 return NotFound();
             }
 
-            // Inicializamos el Input para el formulario
             Input = new InputModel { OperacionId = id };
 
             return Page();
@@ -51,59 +47,62 @@ namespace KalkulosCore.Pages.Pagos
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || Input.MontoPago <= 0)
             {
-                // Si hay un error, volvemos a cargar la página
+                // Si el modelo no es válido o el monto es cero/negativo, recargamos la página.
                 return await OnGetAsync(Input.OperacionId);
             }
 
-            var prestamo = await _context.Prestamos
-                .Include(p => p.Cuota.Where(c => c.Estado == "PENDIENTE" || c.Estado == "PENDIENTE CAPITAL").OrderBy(c => c.Vence))
-                .FirstOrDefaultAsync(p => p.Operacion == Input.OperacionId);
-
-            if (prestamo == null)
+            // 1. Buscamos solo las cuotas pendientes del préstamo, ordenadas por vencimiento.
+            var cuotasPendientes = await _context.Cuotas
+                .Where(c => c.Operacion == Input.OperacionId && (c.Estado == "PENDIENTE" || c.Estado == "PENDIENTE CAPITAL"))
+                .OrderBy(c => c.Vence)
+                .ToListAsync();
+            
+            if (!cuotasPendientes.Any())
             {
-                return NotFound();
+                // No hay cuotas pendientes para pagar.
+                return RedirectToPage(new { id = Input.OperacionId });
             }
 
             double montoRestanteDelPago = Input.MontoPago;
 
-            // Aplicamos el pago a las cuotas pendientes, empezando por la más antigua
-            foreach (var cuota in prestamo.Cuota)
+            // 2. Iteramos sobre las cuotas pendientes para aplicar el pago.
+            foreach (var cuota in cuotasPendientes)
             {
-                if (montoRestanteDelPago <= 0) break; // Si ya no queda monto por aplicar, salimos del bucle
+                if (montoRestanteDelPago <= 0) break; // Salimos si ya no queda monto por aplicar.
 
-                double montoNecesarioParaSaldar = (cuota.Monto ?? 0) - (cuota.Pago ?? 0);
-                double montoAAplicar = Math.Min(montoRestanteDelPago, montoNecesarioParaSaldar);
+                double saldoDeLaCuota = (cuota.Monto ?? 0) - (cuota.Pago ?? 0);
+                double montoAAplicar = Math.Min(montoRestanteDelPago, saldoDeLaCuota);
 
                 cuota.Pago = (cuota.Pago ?? 0) + montoAAplicar;
-
+                
+                // 3. Verificamos si la cuota fue saldada para cambiar su estado.
                 if (cuota.Pago >= cuota.Monto)
                 {
                     cuota.Estado = "PAGO";
                 }
 
-                // Creamos un registro del pago
+                // 4. Creamos un registro de la transacción en la tabla PAGOS.
                 var nuevoPago = new Pago
                 {
-                    Numero = 0, // Debemos definir cómo se genera este número
-                    Idcliente = prestamo.Idcliente,
+                    Idcliente = cuota.Idcliente,
                     Idcuota = cuota.Id,
                     Monto = montoAAplicar,
                     Fecha = Input.FechaPago,
                     Tipocuota = cuota.Tipodecuotas,
-                    Operacion = prestamo.Operacion,
-                    Tipo = "PAGO" // O el tipo que corresponda
+                    Operacion = cuota.Operacion,
+                    Tipo = "PAGO"
                 };
                 _context.Pagos.Add(nuevoPago);
 
                 montoRestanteDelPago -= montoAAplicar;
             }
-
-            // Guardamos todos los cambios (actualización de cuotas y nuevos pagos)
+            
+            // 5. Guardamos todos los cambios en la base de datos.
             await _context.SaveChangesAsync();
 
-            // Redirigimos de nuevo a la misma página para ver el estado actualizado
+            // Redirigimos de nuevo a la misma página para ver el estado actualizado.
             return RedirectToPage(new { id = Input.OperacionId });
         }
     }

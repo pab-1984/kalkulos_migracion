@@ -42,10 +42,11 @@
                 <div class="col-md-6">
                     <div class="form-group mb-3">
                         <label asp-for="Prestamo.Moneda" class="control-label"></label>
-                        <input asp-for="Prestamo.Moneda" class="form-control" />
+                        <select asp-for="Prestamo.Moneda" class="form-control" asp-items="Model.MonedasOptions">
+                            <option value="">-- Seleccione Moneda --</option>
+                        </select>
                     </div>
                 </div>
-            </div>
 
             <div class="row">
                 <div class="col-md-6">
