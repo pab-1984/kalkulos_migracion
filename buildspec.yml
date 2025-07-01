@@ -1,1 +1,31 @@
+version: 0.2
 
+phases:
+  pre_build:
+    commands:
+      - echo "Iniciando sesión en Amazon ECR..."
+      # El AWS_ACCOUNT_ID y AWS_DEFAULT_REGION son variables de entorno provistas por CodeBuild
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/kuotas
+      # Usamos el hash del commit de git como etiqueta para la imagen, garantizando unicidad
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+
+  build:
+    commands:
+      - echo "Construyendo la imagen de Docker..."
+      # Construimos la imagen Docker usando nuestro Dockerfile
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+
+  post_build:
+    commands:
+      - echo "Empujando la imagen de Docker a Amazon ECR..."
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo "Creando el archivo de definición de imagen para ECS..."
+      # Este archivo es el "artefacto" que CodePipeline usará para el despliegue
+      - printf '[{"name":"kuotas-container","imageUri":"%s"}]' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
