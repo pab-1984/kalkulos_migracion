@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace KalkulosCore.Models;
@@ -63,6 +63,8 @@ public partial class Prestamo
     public DateTime SysEndTime { get; set; }
 
     public virtual Acreedore? IdacreedorNavigation { get; set; }
-    
+
     public virtual Cliente? IdclienteNavigation { get; set; }
+    
+    public virtual ICollection<Pdfoperacion> Pdfoperacions { get; set; } = new List<Pdfoperacion>();
 }
