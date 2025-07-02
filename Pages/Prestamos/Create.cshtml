@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-8">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <div class="row">
@@ -47,6 +47,7 @@
                         </select>
                     </div>
                 </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-6">
@@ -77,6 +78,13 @@
                 <label asp-for="Prestamo.Observaciones" class="control-label"></label>
                 <textarea asp-for="Prestamo.Observaciones" class="form-control" rows="3"></textarea>
             </div>
+            
+            <hr />
+            <div class="form-group mb-3">
+                <label asp-for="PdfFile" class="form-label">Adjuntar PDF de la Operación (Opcional)</label>
+                <input asp-for="PdfFile" class="form-control" type="file" accept=".pdf" />
+            </div>
+            <hr />
             
             <br/>
             <div class="form-group">
