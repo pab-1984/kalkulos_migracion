@@ -17,4 +17,6 @@ public partial class Cliente
     public string? Telcelular { get; set; }
 
     public string? Email { get; set; }
+
+    public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 }

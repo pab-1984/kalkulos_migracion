@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pabloflores/Desktop/KalkulosCore/KalkulosCore.csproj": {}
+    "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/KalkulosCore.csproj": {}
   },
   "projects": {
-    "/Users/pabloflores/Desktop/KalkulosCore/KalkulosCore.csproj": {
+    "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/KalkulosCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pabloflores/Desktop/KalkulosCore/KalkulosCore.csproj",
+        "projectUniqueName": "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/KalkulosCore.csproj",
         "projectName": "KalkulosCore",
-        "projectPath": "/Users/pabloflores/Desktop/KalkulosCore/KalkulosCore.csproj",
+        "projectPath": "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/KalkulosCore.csproj",
         "packagesPath": "/Users/pabloflores/.nuget/packages/",
-        "outputPath": "/Users/pabloflores/Desktop/KalkulosCore/obj/",
+        "outputPath": "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/pabloflores/.nuget/NuGet/NuGet.Config"

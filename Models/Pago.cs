@@ -22,4 +22,6 @@ public partial class Pago
     public string? Tipo { get; set; }
 
     public int? Operacion { get; set; }
+
+    public virtual Cliente? IdclienteNavigation { get; set; }
 }

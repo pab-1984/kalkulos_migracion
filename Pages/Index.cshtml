@@ -1,10 +1,94 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Página de Inicio";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido a Kalkulos</h1>
+    <p>Resumen de actividad reciente.</p>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h5>Pagos Recientes por Deudor</h5>
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Deudor</th>
+                    <th>Monto Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PagosRecientesPorDeudor)
+                {
+                    <tr>
+                        <td>@item.Fecha?.ToString("dd/MM/yyyy")</td>
+                        <td>@Html.DisplayFor(modelItem => item.NombreDeudor)</td>
+                        <td>@item.Monto?.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h5>Últimos Pagos de Cuotas Recibidos</h5>
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Operación</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UltimosPagos)
+                {
+                    <tr>
+                        <td>@item.Fecha?.ToString("dd/MM/yyyy")</td>
+                        <td>@item.IdclienteNavigation?.Nombres</td>
+                        <td>@Html.DisplayFor(modelItem => item.Operacion)</td>
+                        <td>@item.Monto?.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <h5>Operaciones Activas</h5>
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    <th>Operación</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Capital</th>
+                    <th>Moneda</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PrestamosActivos)
+                {
+                    // Lógica para resaltar las filas de préstamos atrasados
+                    var fechaLimite = DateTime.Now.AddMonths(-3);
+                    bool estaAtrasado = item.Cuota.Any(c => c.Estado == "PENDIENTE" && c.Vence < fechaLimite);
+                    var claseFila = estaAtrasado ? "table-warning" : "";
+
+                    <tr class="@claseFila">
+                        <td>@Html.DisplayFor(modelItem => item.Operacion)</td>
+                        <td>@item.Fecha?.ToString("dd/MM/yyyy")</td>
+                        <td>@item.IdclienteNavigation?.Nombres</td>
+                        <td>@item.Capitalinicial?.ToString("C")</td>
+                        <td>@Html.DisplayFor(modelItem => item.Moneda)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -393,20 +393,19 @@ public partial class KuotasDbContext : IdentityDbContext
             entity.ToTable("PAGOS");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.Fecha)
-                .HasColumnType("datetime")
-                .HasColumnName("FECHA");
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Idcliente).HasColumnName("IDCLIENTE");
             entity.Property(e => e.Idcuota).HasColumnName("IDCUOTA");
             entity.Property(e => e.Monto).HasColumnName("MONTO");
             entity.Property(e => e.Numero).HasColumnName("NUMERO");
             entity.Property(e => e.Operacion).HasColumnName("OPERACION");
-            entity.Property(e => e.Tipo)
-                .HasMaxLength(100)
-                .HasColumnName("TIPO");
-            entity.Property(e => e.Tipocuota)
-                .HasMaxLength(100)
-                .HasColumnName("TIPOCUOTA");
+            entity.Property(e => e.Tipo).HasMaxLength(100);
+            entity.Property(e => e.Tipocuota).HasMaxLength(100);
+
+            // --- LÍNEAS AÑADIDAS PARA DEFINIR LA RELACIÓN ---
+            entity.HasOne(d => d.IdclienteNavigation).WithMany(p => p.Pagos)
+                .HasForeignKey(d => d.Idcliente)
+                .HasConstraintName("FK_Pagos_Cliente");
         });
 
         modelBuilder.Entity<PagosBorrado>(entity =>

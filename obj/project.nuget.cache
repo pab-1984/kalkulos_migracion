@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ycyZrfZQt3U=",
+  "dgSpecHash": "XD1LIIWFEZE=",
   "success": true,
-  "projectFilePath": "/Users/pabloflores/Desktop/KalkulosCore/KalkulosCore.csproj",
+  "projectFilePath": "/Users/pabloflores/Desktop/kalkulosCore2/kalkulos_migracion/KalkulosCore.csproj",
   "expectedPackageFiles": [
     "/Users/pabloflores/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/pabloflores/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
